@@ -1,10 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Navbar from '../ShearedPage/Navbar';
 
 const MainLayout = () => {
     return (
         <>
-        <h1>navbar</h1>
+        <Navbar/>
         <div className="content">
             <Outlet></Outlet>
         </div>

@@ -10,6 +10,7 @@ const AddedCast = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const [loginError, setLoginError] = useState("");
@@ -27,7 +28,14 @@ const AddedCast = () => {
 
     console.log(addCast);
     axios.post(`http://localhost:5000/user/add-cast`, addCast)
-    .then((res)=> console.log(res.data))
+    .then((res)=> {
+      if(res.data.message ==="Post created successfully"){
+        reset()
+      }
+      if(res.data.message ==="Post is Alrady Exist"){
+        setLoginError("Duplicate Value")
+      }
+    })
     .catch(e=> console.log(e))
     
   };

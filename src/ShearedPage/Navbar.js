@@ -30,6 +30,18 @@ const Navbar = () => {
               Home
             </Link>
           </li>
+
+          {
+            user?.role === "admin" && 
+            <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">
+            <Link
+              to="/adminpannel"
+              className="text-gray-300 hover:text-white font-semibold tracking-tight"
+            >
+              Admin Dashboard
+            </Link>
+          </li>
+          }
          
 
           {user?.email ? (

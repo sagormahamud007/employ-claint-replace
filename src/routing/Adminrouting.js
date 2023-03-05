@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { mycontext } from '../contextApi/AuthContext';
-import Loadding from '../shearedcomp/Loadding/Loadding';
+import { myContext } from '../contextApi/Authcontext';
+
 
 const AdminRouting = ({children}) => {
-    const {user,Loading} = useContext(mycontext)
+    const {user,Loading} = useContext(myContext)
     const location = useLocation();
     if(Loading){
          
-         return <Loadding/>
+         return <p>Looadding ...</p>
     }
     if (user?.role === "admin"){
         return children;

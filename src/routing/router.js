@@ -8,7 +8,7 @@ import Register from "../commonPage/Register";
 import AddedCast from "../Employ/cast/AddedCast";
 import Profile from "../Employ/profile/Profile";
 import MainLayout from "../layout/MainLayout";
-import AdminRouting from "./AdminRouting";
+import AdminRouting from "./Adminrouting"
 import Privetrouting from "./PrivetRouting";
 
 const router = createBrowserRouter([

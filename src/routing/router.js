@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AllUser from "../Admin/allUserInfo/AllUser";
+import EdetePost from "../Admin/edetePost/EdetePost";
 import SingleuserInfo from "../Admin/SingleuserInfo";
 import Home from "../commonPage/Home";
 import Login from "../commonPage/Login";
@@ -63,6 +64,17 @@ const router = createBrowserRouter([
           </AdminRouting>
         ),
         loader : ({params})=> fetch(`http://localhost:5000/admin/user-info/${params.id}`)
+      },
+
+      {
+        path: "/adminpannel/edete-post/:id",
+        element: (
+          <AdminRouting>
+            {" "}
+            <EdetePost />{" "}
+          </AdminRouting>
+        ),
+        loader : ({params})=> fetch(`http://localhost:5000/admin/edete-post/${params.id}`)
       },
     ],
   },

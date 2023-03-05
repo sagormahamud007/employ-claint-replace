@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <div className="bg-gray-900 text-white md:sticky lg:sticky md:top-0 lg:top-0">
       <nav className="flex justify-between p-5">
-        <h2>Tanzil's Blogs</h2>
+        <h2>Employ History</h2>
 
         <ul className={`md:flex lg:flex md:items-center lg:items-center`}>
           <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">

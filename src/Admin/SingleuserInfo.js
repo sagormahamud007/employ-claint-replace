@@ -1,15 +1,17 @@
 import moment from "moment";
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import axios from "axios";
 const SingleuserInfo = () => {
   const [filtterArray, setfiltterArray] = useState([]);
 
   const [search, setsearch] = useState(false);
   const [totalCast, settotalCast] = useState(0);
   const [startdate, setstartdate] = useState(0);
-  const userdatas = useLoaderData();
+  const userdatass = useLoaderData();
+  const [userdatas, setuserdatas] = useState([...userdatass])
   const coppyUserData = [...userdatas];
   const date = moment().format("DD MM YY");
 
@@ -52,23 +54,48 @@ const SingleuserInfo = () => {
     });
   };
 
-
+  // delete
+  const handledelete = (id) => {
+    axios.delete(`http://localhost:5000/admin/delete-cast?id=${id}`)  
+    .then(res =>{
+      if(res.data.message === "success"){
+        const remaining = userdatas.filter(post => post._id !== id);
+                  setuserdatas(remaining);
+                  alert("Delete Success")
+      }
+    })
+    .catch(e=> console.log(e))
+  };
 
   console.log(filtterArray);
   return (
-    <div>
-     
+    <>
 
-      <div className="w-2/12 mx-auto mt-5">
-        <form onSubmit={handleFilter}>
-          <input
-            type="text"
-            name="startDate"
-            placeholder="Filter Like 25 04 23"
-          />
-          <input type="submit" value="Filtter" />
-        </form>
+    {
+      userdatas.length || <div className="w-full h-[80vh] flex items-center justify-center">
+        <h1 className="text-center text-2xl">No data Found</h1>
       </div>
+    }
+
+
+     <div>
+     {
+      userdatas.length &&   <div className="w-10/12 md:w-3/12 lg:w-3/12 mx-auto mt-5">
+      <form onSubmit={handleFilter}>
+        <input
+          type="text"
+          name="startDate"
+          placeholder="Filter Like 05 04 23"
+        />
+        <input
+          type="submit"
+          className="bg-[red] cursor-pointer px-2"
+          value="Filtter"
+        />
+      </form>
+    </div>
+    }
+    
       {search && (
         <div className="text-center">
           <h1 className="text-center text-2xl font-semibold">
@@ -85,7 +112,6 @@ const SingleuserInfo = () => {
           >
             Download PDF
           </button>
-         
         </div>
       )}
       <div className="flex justify-center w-8/12 mx-auto">
@@ -98,6 +124,8 @@ const SingleuserInfo = () => {
                 <th className="px-4 py-2">Name</th>
                 <th className="px-4 py-2">reason</th>
                 <th className="px-4 py-2">costAmount</th>
+                <th className="px-4 py-2">Action</th>
+                <th className="px-4 py-2">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -108,6 +136,18 @@ const SingleuserInfo = () => {
                   <td className="border px-4 py-2"> {data.name} </td>
                   <td className="border px-4 py-2"> {data.reason} </td>
                   <td className="border px-4 py-2"> {data.costAmount} </td>
+                  <td className="border px-4 py-2">
+                    {" "}
+                    <Link to={`/adminpannel/edete-post/${data._id}`}>
+                      Edete
+                    </Link>{" "}
+                  </td>
+                  <td className="border px-4 py-2">
+                    {" "}
+                    <button onClick={() => handledelete(data._id)}>
+                      Delete
+                    </button>{" "}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -154,6 +194,7 @@ const SingleuserInfo = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

@@ -75,14 +75,14 @@ const Profile = () => {
      <div>
      
 
-     <div className="w-2/12 mx-auto mt-5">
+     <div className="w-10/12 md:w-3/12 lg:w-3/12 mx-auto mt-5">
        <form onSubmit={handleFilter}>
          <input
            type="text"
            name="startDate"
-           placeholder="Filter Like 25 04 23"
+           placeholder="Filter Like 05 04 23"
          />
-         <input type="submit" value="Filtter" />
+         <input type="submit" className="bg-[red] cursor-pointer px-2" value="Filtter" />
        </form>
      </div>
      {search && (

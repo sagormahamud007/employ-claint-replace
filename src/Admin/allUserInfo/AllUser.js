@@ -1,11 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { myContext } from '../../contextApi/Authcontext';
 
 const AllUser = () => {
     const [users, setusers] = useState([])
+    const {Loading}= useContext(myContext)
     useEffect(() => {
-      axios.get(`http://localhost:5000/admin/all-user`)
+      axios.get(`https://employ-server.vercel.app/admin/all-user`)
       .then(res =>{
         if(res.data.message === "success"){
             setusers(res.data.data)

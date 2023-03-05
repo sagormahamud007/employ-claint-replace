@@ -37,7 +37,7 @@ const Register = () => {
     }
 
 
-    axios.post(`http://localhost:5000/auth/register`, userinfos)
+    axios.post(`https://employ-server.vercel.app/auth/register`, userinfos)
     .then(res => {
       switch (res.data.message) {
         case "success":

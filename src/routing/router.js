@@ -63,7 +63,7 @@ const router = createBrowserRouter([
             <SingleuserInfo />{" "}
           </AdminRouting>
         ),
-        loader : ({params})=> fetch(`http://localhost:5000/admin/user-info/${params.id}`)
+        loader : ({params})=> fetch(`https://employ-server.vercel.app/admin/user-info/${params.id}`)
       },
 
       {
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
             <EdetePost />{" "}
           </AdminRouting>
         ),
-        loader : ({params})=> fetch(`http://localhost:5000/admin/edete-post/${params.id}`)
+        loader : ({params})=> fetch(`https://employ-server.vercel.app/admin/edete-post/${params.id}`)
       },
     ],
   },

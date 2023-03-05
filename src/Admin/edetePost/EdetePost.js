@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { myContext } from '../../contextApi/Authcontext';
 
 const EdetePost = () => {
     const edetedData = useLoaderData()
+    const {Loading}= useContext(myContext)
     const naviget = useNavigate()
     const { reason,costAmount,_id} = edetedData?.posts
     const {
@@ -27,7 +29,7 @@ const EdetePost = () => {
         };
 
 
-        axios.put(`http://localhost:5000/admin/edite-post`, edetedInfo)
+        axios.put(`https://employ-server.vercel.app/admin/edite-post`, edetedInfo)
         .then(res => {
             if(res.data.message === "Update Complete"){
                 naviget('/adminpannel') 

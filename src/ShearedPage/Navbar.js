@@ -3,15 +3,17 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { myContext } from "../contextApi/Authcontext";
 
-
-
 const Navbar = () => {
   const neviget = useNavigate();
-  const { user, logout } = useContext(myContext)
+  const { user, logout, Loading } = useContext(myContext);
 
-  const handleLogout = ()=>{
-    logout()
-    neviget('/')
+  const handleLogout = () => {
+    logout();
+    neviget("/");
+  };
+
+  if (Loading) {
+    return <p>Loadding...</p>;
   }
 
   // get all categorys
@@ -31,38 +33,36 @@ const Navbar = () => {
             </Link>
           </li>
 
-          {
-            user?.role === "admin" && 
+          {user?.role === "admin" && (
             <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">
-            <Link
-              to="/adminpannel"
-              className="text-gray-300 hover:text-white font-semibold tracking-tight"
-            >
-              Admin Dashboard
-            </Link>
-          </li>
-          }
-         
+              <Link
+                to="/adminpannel"
+                className="text-gray-300 hover:text-white font-semibold tracking-tight"
+              >
+                Admin Dashboard
+              </Link>
+            </li>
+          )}
 
           {user?.email ? (
             <>
-             <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">
-            <Link
-              to="/profile"
-              className="text-gray-300 hover:text-white font-semibold tracking-tight"
-            >
-              My Profile
-            </Link>
-          </li>
-            <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">
-              <Link
-                to="/addcast"
-                className="text-gray-300 hover:text-white font-semibold tracking-tight"
-              >
-                Add Cast
-              </Link>
-            </li>
-            <button onClick={handleLogout}>Logout</button>
+              <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">
+                <Link
+                  to="/profile"
+                  className="text-gray-300 hover:text-white font-semibold tracking-tight"
+                >
+                  My Profile
+                </Link>
+              </li>
+              <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">
+                <Link
+                  to="/addcast"
+                  className="text-gray-300 hover:text-white font-semibold tracking-tight"
+                >
+                  Add Cast
+                </Link>
+              </li>
+              <button onClick={handleLogout}>Logout</button>
             </>
           ) : (
             <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">

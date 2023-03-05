@@ -20,7 +20,7 @@ const Authcontext = ({ children }) => {
   useEffect(() => {
     if (token || islogin) {
       axios
-        .post(`http://localhost:5000/auth/user-info`, { token })
+        .post(`https://employ-server.vercel.app/auth/user-info`, { token })
         .then((res) => {
           if (res.data.message === "successfull") {
             setuser(res.data.data);

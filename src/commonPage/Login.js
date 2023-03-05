@@ -29,7 +29,7 @@ const Login = () => {
     };
 
     axios
-      .post(`http://localhost:5000/auth/login`, userinfo)
+      .post(`https://employ-server.vercel.app/auth/login`, userinfo)
       .then((res) => {
         switch (res.data.message) {
           case "Login Successful":

@@ -1,11 +1,13 @@
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import axios from "axios";
+import { myContext } from "../contextApi/Authcontext";
 const SingleuserInfo = () => {
   const [filtterArray, setfiltterArray] = useState([]);
+  const {Loading}= useContext(myContext)
 
   const [search, setsearch] = useState(false);
   const [totalCast, settotalCast] = useState(0);
@@ -56,7 +58,7 @@ const SingleuserInfo = () => {
 
   // delete
   const handledelete = (id) => {
-    axios.delete(`http://localhost:5000/admin/delete-cast?id=${id}`)  
+    axios.delete(`https://employ-server.vercel.app/admin/delete-cast?id=${id}`)  
     .then(res =>{
       if(res.data.message === "success"){
         const remaining = userdatas.filter(post => post._id !== id);
@@ -68,6 +70,8 @@ const SingleuserInfo = () => {
   };
 
   console.log(filtterArray);
+
+
   return (
     <>
 

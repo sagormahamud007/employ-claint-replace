@@ -11,6 +11,7 @@ const Home = () => {
       <h2 className="text-center text-2xl">
          {user ? `wellcome back ${user?.name}` : "Home Page"}{" "}
       </h2>
+      <div>shagor</div>
     </div>
   );
 };

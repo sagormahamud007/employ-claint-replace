@@ -71,19 +71,19 @@ const Profile = () => {
   }
   return (
     <div>
-      <h2 className="text-xl text-center my-4">Hi , {user?.name} </h2>
+      <h2 className="text-xl text-center mr-2 my-4">Hi , {user?.name} </h2>
       <div>
         <div>
-          <div className="w-10/12 md:w-3/12 lg:w-3/12 mx-auto mt-5">
+          <div className="w-10/15 md:w-3/12 lg:w-3/12 mx-auto mt-5">
             <form onSubmit={handleFilter}>
-              <input
+              <input className="px-6 py-2"
                 type="text"
                 name="startDate"
                 placeholder="Filter Like 05 04 23"
               />
               <input
                 type="submit"
-                className="bg-[red] cursor-pointer px-2"
+                className="bg-[#392abe] cursor-pointer px-6 py-2"
                 value="Filtter"
               />
             </form>
@@ -132,7 +132,7 @@ const Profile = () => {
               </table>
             ) : (
               <>
-                {filtterArray.length && (
+                {filtterArray && (
                   <table
                     id="table-to-pdf"
                     className="table-auto w-full my-5 text-center text-sm"

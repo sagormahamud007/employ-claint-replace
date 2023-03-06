@@ -87,13 +87,14 @@ const SingleuserInfo = () => {
       userdatas.length &&   <div className="w-10/12 md:w-3/12 lg:w-3/12 mx-auto mt-5">
       <form onSubmit={handleFilter}>
         <input
+        className="py-3 px-7"
           type="text"
           name="startDate"
           placeholder="Filter Like 05 04 23"
         />
         <input
           type="submit"
-          className="bg-[red] cursor-pointer px-2"
+          className="bg-[#283fa5] text-white cursor-pointer py-3 px-7"
           value="Filtter"
         />
       </form>

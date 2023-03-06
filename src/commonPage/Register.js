@@ -3,6 +3,8 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { myContext } from "../contextApi/Authcontext";
+import {toast } from 'react-toastify';
+import './Register.css'
 
 const Register = () => {
   const {setLoading} = useContext(myContext)
@@ -41,6 +43,7 @@ const Register = () => {
     .then(res => {
       switch (res.data.message) {
         case "success":
+          toast("Created user successfully")
           neviget("/login");
           break;
         case "Email Is Already Used":
@@ -58,15 +61,16 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full h-[100vh] login_page flex items-center justify-center ">
+   <div className="RegisterOverlay h-screen">
+     <div className="w-full  login_page flex items-center justify-center ">
       <div className=" p-10 lg:w-[479px] md:w-[479px] md:h-[497px] lg:h-[497px] w-11/12 h-full">
-        <h2 className="text-3xl text-center">Register Now</h2>
+        <h2 className="text-3xl text-center font-bold text-white">Register Now</h2>
         
         <form onSubmit={handleSubmit(handleRegister)}>
           <div className="form-control w-full">
             <label className="label">
               {" "}
-              <span className="label-text">Name</span>
+              <span className="font-4xl">Name</span>
             </label>
             <input
               placeholder="Enter Your Name"
@@ -83,7 +87,7 @@ const Register = () => {
           <div className="form-control w-full">
             <label className="label">
               {" "}
-              <span className="label-text">Email</span>
+              <span className="font-4xl">Email</span>
             </label>
             <input
               placeholder="Enter Your Email"
@@ -101,7 +105,7 @@ const Register = () => {
           <div className="form-control w-full">
             <label className="label">
               {" "}
-              <span className="label-text">Employ Id</span>
+              <span className="font-4xl">Employ Id</span>
             </label>
             <input
               placeholder="Enter Your EmployId"
@@ -119,7 +123,7 @@ const Register = () => {
           <div className="form-control w-full">
             <label className="label">
               {" "}
-              <span className="label-text">Password</span>
+              <span className="font-4xl">Password</span>
             </label>
             <input
               placeholder="Enter Your Password"
@@ -139,7 +143,7 @@ const Register = () => {
             )}
           </div>
           <input
-            className=" bg-[#A5D9D0] hover:cursor-pointer hover:bg-[#11c7a8] my-2  py-2 px-4 font-bold text-xl w-full rounded-lg"
+            className=" bg-[#5139a7] hover:cursor-pointer hover:bg-[#6b41af] my-2 text-white  py-2 px-4 mt-0 font-bold text-xl w-full rounded-lg"
             value="Register"
             type="submit"
           />
@@ -147,9 +151,10 @@ const Register = () => {
             {registerError && <p className="text-red-600">{registerError}</p>}
           </div>
         </form>
-        <p className="my-1">Already Have an account ? <Link to = '/login' className="font-bold text-blue-400">Login Now</Link> </p>
+        <p className="my-1 text-red-200 font-medium ">Already Have an account ? <Link to = '/login' className="text-red-400 font-medium">Login Now</Link> </p>
       </div>
     </div>
+   </div>
   );
 };
 

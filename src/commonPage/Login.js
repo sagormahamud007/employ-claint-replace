@@ -3,6 +3,8 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { myContext } from "../contextApi/Authcontext";
+import {toast } from 'react-toastify';
+import './Login.css'
 
 const Login = () => {
   const { setisLogedind, setLoading } = useContext(myContext);
@@ -37,6 +39,7 @@ const Login = () => {
             localStorage.setItem("token", token);
             setisLogedind(true);
             neviget(from, { replace: true });
+            toast("User Login successfully")
             break;
           case "password not Match":
             setLoginError(res.data.message);
@@ -52,8 +55,11 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full h-[100vh] login_page flex items-center justify-center">
-      <div className=" p-10 lg:w-[479px] md:w-[479px] md:h-[497px] lg:h-[497px] w-11/12 h-full">
+    <div className="overlayImg">
+      
+      <div className="w-full  login_page flex items-center justify-center">
+      <div className=" py-24 lg:w-[479px] md:w-[570px] md:h-[500px] lg:h-[600px] w-11/12 h-full">
+      <h2 className="text-center  font-bold text-4xl text-white">Login Now</h2>
         <form onSubmit={handleSubmit(handlLogin)}>
           <div className="form-control w-full">
             <label className="label">
@@ -95,7 +101,7 @@ const Login = () => {
             )}
           </div>
           <input
-            className=" bg-[#A5D9D0] hover:cursor-pointer hover:bg-[#11c7a8] my-2  py-2 px-4 mt-0 font-bold text-xl w-full rounded-lg"
+            className=" bg-[#5139a7] hover:cursor-pointer hover:bg-[#6b41af] my-2 text-white  py-2 px-4 mt-0 font-bold text-xl w-full rounded-lg"
             value="Login"
             type="submit"
           />
@@ -103,13 +109,14 @@ const Login = () => {
             {loginError && <p className="text-red-600">{loginError}</p>}
           </div>
         </form>
-        <p className="my-1">
-          New To Tanzil's Blog ?{" "}
-          <Link to="/register" className="font-bold text-blue-400">
+        <p className="my-1 text-red-200 font-medium">
+        CREATE A NEW ACCOUNT ?{" "}
+          <Link to="/register" className="text-red-400 font-medium">
             Register Now
           </Link>{" "}
         </p>
       </div>
+    </div>
     </div>
   );
 };

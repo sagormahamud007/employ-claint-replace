@@ -49,7 +49,7 @@ const EdetePost = () => {
             <div className="form-control w-full">
               <label className="label">
                 {" "}
-                <span className="label-text"> Cost Reasons </span>
+                <span className="font-4xl"> Cost Reasons </span>
               </label>
               <input
                 placeholder="Enter  Reasons"
@@ -67,17 +67,17 @@ const EdetePost = () => {
             <div className="form-control w-full">
               <label className="label">
                 {" "}
-                <span className="label-text">amount of expenditure  </span>
+                <span className="font-4xl">Amount of expenditure  </span>
               </label>
               <input
-                placeholder="Enter Expences(TK)"
+                placeholder="Enter Expense(TK)"
                 type="text"
                 defaultValue={costAmount}
                 {...register("amount", {
-                  required: "Expences is required",
+                  required: "Expense is required",
                   minLength: {
                     value: 2,
-                    message: "Expences must be 10 tk or longer",
+                    message: "Expense must be 10 tk or longer",
                   },
                 })}
                 className="input input-bordered w-full py-2 px-4 my-2 rounded-lg"
@@ -88,8 +88,8 @@ const EdetePost = () => {
               )}
             </div>
             <input
-              className=" bg-[#A5D9D0] hover:cursor-pointer hover:bg-[#11c7a8] my-2  py-2 px-4 mt-0 font-bold text-xl w-full rounded-lg"
-              value="Edete Cast"
+              className=" bg-[#17468b] hover:cursor-pointer text-white hover:bg-[#5248dd] my-2  py-2 px-4 mt-0 font-bold text-xl w-full rounded-lg"
+              value="Edit Cast"
               type="submit"
             />
             <div>

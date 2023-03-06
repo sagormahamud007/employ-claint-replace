@@ -2,6 +2,7 @@ import axios from "axios";
 import moment from "moment/moment";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { myContext } from "../../contextApi/Authcontext";
 
 const AddedCast = () => {
@@ -34,7 +35,7 @@ const AddedCast = () => {
         if (res.data.message === "Post created successfully") {
           reset();
         }
-        if (res.data.message === "Post is Alrady Exist") {
+        if (res.data.message === "Post is Already Exist") {
           setLoginError("Duplicate Value");
         }
       })
@@ -52,7 +53,7 @@ const AddedCast = () => {
           <div className="form-control w-full">
             <label className="label">
               {" "}
-              <span className="label-text"> Cost Reasons </span>
+              <span className="font-4xl"> Cost Reasons </span>
             </label>
             <input
               placeholder="Enter  Reasons"
@@ -69,10 +70,10 @@ const AddedCast = () => {
           <div className="form-control w-full">
             <label className="label">
               {" "}
-              <span className="label-text">amount of expenditure </span>
+              <span className="font-4xl">Amount of expenditure </span>
             </label>
             <input
-              placeholder="Enter Expences(TK)"
+              placeholder="Enter expense(TK)"
               type="text"
               {...register("amount", {
                 required: "Expences is required",
@@ -89,7 +90,7 @@ const AddedCast = () => {
             )}
           </div>
           <input
-            className=" bg-[#A5D9D0] hover:cursor-pointer hover:bg-[#11c7a8] my-2  py-2 px-4 mt-0 font-bold text-xl w-full rounded-lg"
+            className=" bg-[#3149b3] hover:cursor-pointer hover:bg-[#874ef1] my-2 text-white py-2 px-4 mt-0 font-bold text-xl w-full rounded-lg"
             value="Add Cast"
             type="submit"
           />

@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import { myContext } from "../contextApi/Authcontext";
+import './Home.css'
 
 const Home = () => {
   const {  user, Loading } = useContext(myContext);
   if (Loading) {
-    return <p>Loadding...</p>;
+    return <p>Loading...</p>;
   }
   return (
-    <div>
-      <h2 className="text-center text-2xl">
-         {user ? `wellcome back ${user?.name}` : "Home Page"}{" "}
+    <div className="homeOverlay h-screen">
+      <h2 className="text-center text-3xl  text-white ">
+         {user ? `Welcome Back  ${user?.name}` : "Home Page"}{" "}
       </h2>
-      <div>shagor</div>
+
     </div>
   );
 };
